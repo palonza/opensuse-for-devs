@@ -55,10 +55,8 @@ wget -P /etc/zypp/repos.d/ https://download.wavebox.app/stable/linux/rpm/wavebox
 zypper install -y --auto-agree-with-licenses Wavebox;
 
 echo -e "\nINSTALL DOCKER";
-zypper --gpg-auto-import-keys --non-interactive --quiet ar -n 'repo-docker' \
--f https://download.opensuse.org/repositories/home:cyphar:docker/openSUSE_Tumbleweed/home:cyphar:docker.repo && \
-zypper install -y --auto-agree-with-licenses docker && zypper install -y --auto-agree-with-licenses yast2-docker && \
-zypper mr --disable 'repo-docker' && usermod -aG docker $(whoami);
+# zypper --gpg-auto-import-keys --non-interactive --quiet ar -n 'repo-docker' -f https://do
+zypper install -y --auto-agree-with-licenses docker yast2-docker && usermod -aG docker $(whoami);
 
 echo -e "\nINSTALL POSTMAN";
 zypper --gpg-auto-import-keys --non-interactive --quiet ar -n 'repo-postman' \
