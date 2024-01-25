@@ -5,8 +5,12 @@ if [ "$(id -u)" != "0" ]; then
     exit 1;
 fi
 
+echo -e "\nUPDATE OPENSUSE";
+# add this param to end next line: -y --auto-agree-with-licenses
+zypper refresh && zypper update;
+
 echo -e "\nUNINSTALL DEFAULT APPLICATIONS";
-sudo zypper remove -y --clean-deps marble kmines kmahjongg \
+zypper remove -y --clean-deps marble kmines kmahjongg \
 kpat kreversi ksudoku kontact hugin kmail ktnef xscreensaver \
 akregator skanlite korganizer pim-sieve-editor \
 pim-data-exporter akonadi-calendar-tools akonadi-contact \
@@ -16,53 +20,51 @@ akonadi-plugin-contacts akonadi-plugin-contacts xterm \
 mariadb mailcommon mailimporter xscreensaver;
 
 echo -e "\nINSTALL UTILITIES";
-sudo zypper install neofetch helvum ksysguard5 symbols-only-nerd-fonts \
+zypper install -y --auto-agree-with-licenses neofetch helvum ksysguard5 symbols-only-nerd-fonts \
 mariadb-client sensors xclip btop powerline-fonts ksystemlog bucklespring \
 inkscape java-11-openjdk eclipse-jdt xournalpp;
-sudo zypper install ruby3.2-rubygem-lolcat;
+zypper install -y --auto-agree-with-licenses ruby3.2-rubygem-lolcat;
 
 echo -e "\nINSTALL GOOGLE CHROME";
-echo -e "[chrome]\nenabled=1\nautorefresh=1\nbaseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64\ntype=rpm-md\npriority=100\ngpgcheck=1\ngpgkey=https://dl.google.com/linux/linux_signing_key.pub\n" > /etc/zypp/repos.d/repo-chrome.repo
-sudo zypper refresh && sudo zypper install google-chrome-stable;
+echo -e "[chrome]\nenabled=1\nautorefresh=1\nbaseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64\ntype=rpm-md\npriority=100\ngpgcheck=1\ngpgkey=https://dl.google.com/linux/linux_signing_key.pub\n" > /etc/zypp/repos.d/repo-chrome.repo && \
+zypper install -y --auto-agree-with-licenses google-chrome-stable;
 
 echo -e "\nINSTALL ZSH";
-sudo zypper install zsh;
-chsh -s $(which zsh);
+zypper install -y --auto-agree-with-licenses zsh && chsh -s $(which zsh);
 
 echo -e "\nINSTALL VSCODE";
-sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc && \
-sudo zypper --gpg-auto-import-keys ar -n 'repo-code' -f https://packages.microsoft.com/yumrepos/vscode vscode && \
-sudo zypper refresh && \
-sudo zypper install code;
+rpm --import https://packages.microsoft.com/keys/microsoft.asc && \
+zypper --gpg-auto-import-keys --non-interactive --quiet ar -n 'repo-code' -f https://packages.microsoft.com/yumrepos/vscode vscode && \
+zypper install -y --auto-agree-with-licenses code;
 
 echo -e "\nINSTALL DOT NET SDK 8";
-sudo zypper install libicu && \
+zypper install -y --auto-agree-with-licenses libicu && \
 wget  -P ~/Downloads/ https://packages.microsoft.com/config/opensuse/15/prod.repo && \
-sudo mv ~/Downloads/prod.repo /etc/zypp/repos.d/microsoft-prod.repo &&\
-sudo chown root:root /etc/zypp/repos.d/microsoft-prod.repo && \
-sudo zypper install dotnet-sdk-8.0;
+mv ~/Downloads/prod.repo /etc/zypp/repos.d/microsoft-prod.repo &&\
+chown root:root /etc/zypp/repos.d/microsoft-prod.repo && \
+zypper install -y --auto-agree-with-licenses dotnet-sdk-8.0;
 
 echo -e "\nINSTALL DBEAVER";
-sudo zypper --gpg-auto-import-keys ar -n 'repo-dbeaver' \
+zypper --gpg-auto-import-keys --non-interactive --quiet ar -n 'repo-dbeaver' \
 -f https://download.opensuse.org/repositories/home:cabelo:innovators/openSUSE_Tumbleweed/home:cabelo:innovators.repo && \
-sudo zypper refresh && sudo zypper mr --disable 'repo-dbeaver';
+zypper install -y --auto-agree-with-licenses dbeaver && zypper mr --disable 'repo-dbeaver';
 
 echo -e "\nINSTALL WAVEBOX";
-curl -sSL https://download.wavebox.app/static/wavebox_repo.key | sudo gpg --import && \
-sudo wget -P /etc/zypp/repos.d/ https://download.wavebox.app/stable/linux/rpm/wavebox.repo && \
-sudo zypper install Wavebox;
+curl -sSL https://download.wavebox.app/static/wavebox_repo.key | gpg --import && \
+wget -P /etc/zypp/repos.d/ https://download.wavebox.app/stable/linux/rpm/wavebox.repo && \
+zypper install -y --auto-agree-with-licenses Wavebox;
 
 echo -e "\nINSTALL DOCKER";
-sudo zypper --gpg-auto-import-keys ar -n 'repo-docker' \
+zypper --gpg-auto-import-keys --non-interactive --quiet ar -n 'repo-docker' \
 -f https://download.opensuse.org/repositories/home:cyphar:docker/openSUSE_Tumbleweed/home:cyphar:docker.repo && \
-sudo zypper refresh && sudo zypper install docker && sudo zypper install yast2-docker && \
-sudo zypper mr --disable 'repo-docker' && sudo usermod -aG docker $(whoami);
+zypper install -y --auto-agree-with-licenses docker && zypper install -y --auto-agree-with-licenses yast2-docker && \
+zypper mr --disable 'repo-docker' && usermod -aG docker $(whoami);
 
 echo -e "\nINSTALL POSTMAN";
-sudo zypper --gpg-auto-import-keys ar -n 'repo-postman' \
+zypper --gpg-auto-import-keys --non-interactive --quiet ar -n 'repo-postman' \
 -f https://download.opensuse.org/repositories/home:gmsh/openSUSE_Tumbleweed/home:gmsh.repo && \
-sudo zypper refresh && sudo zypper install postman && \
-sudo zypper mr --disable 'repo-postman';
+zypper install -y --auto-agree-with-licenses postman && \
+zypper mr --disable 'repo-postman';
 # parameters if run on wayland: --enable-features=UseOzonePlatform --ozone-platform=wayland %u
 
 echo -e "\nINSTALL NVM (NODE VERSION MANAGER)";
@@ -92,10 +94,10 @@ echo -e "\nINSTALL STS 4";
 curl -o ~/Downloads/sts4.tar.gz \
 https://download.springsource.com/release/STS4/4.20.0.RELEASE/dist/e4.29/spring-tool-suite-4-4.20.0.RELEASE-e4.29.0-linux.gtk.x86_64.tar.gz && \
 tar -xzf ~/Downloads/sts4.tar.gz -C /tmp && \
-sudo mv /tmp/sts-4.20.0.RELEASE /opt/ && \
-sudo ln -s /opt/sts-4.20.0.RELEASE/SpringToolSuite4 ~/bin/sts;
+mv /tmp/sts-4.20.0.RELEASE /opt/ && \
+ln -s /opt/sts-4.20.0.RELEASE/SpringToolSuite4 ~/bin/sts;
 
 #echo -e "\nINSTALL KVM"
-#sudo zypper install kvm virt-manager libvirt-daemon libvirt-daemon-driver-qemu
-#sudo usermod -aG kvm $USER
-#sudo usermod -aG libvirt $USER
+#zypper install kvm virt-manager libvirt-daemon libvirt-daemon-driver-qemu
+#usermod -aG kvm $USER
+#usermod -aG libvirt $USER
