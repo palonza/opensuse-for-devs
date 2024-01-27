@@ -7,5 +7,5 @@ Allows installing the most commonly used tools by developers, such as POSIX, IDE
 
 ## Steps
 ```bash
-sudo wget -qO- https://github.com/palonza/opensuse-for-devs/blob/main/install.sh | sudo bash
+sudo wget -qO- https://github.com/palonza/opensuse-for-devs/blob/main/install.sh | sudo bash -s "$(whoami)";
 ```
