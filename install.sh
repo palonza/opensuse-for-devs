@@ -132,7 +132,7 @@ sudo -u $1 tar -xzf ~/Downloads/sts4.tar.gz -C /tmp && \
 mv /tmp/sts-4.20.0.RELEASE /opt/ && \
 sudo -u $1 ln -s /opt/sts-4.20.0.RELEASE/SpringToolSuite4 ~/bin/sts;
 
-#echo -e "\nINSTALL KVM"
+#echo -e "\nINSTALL KVM (Please, close this sesion, when finish.)"
 #zypper install kvm virt-manager libvirt-daemon libvirt-daemon-driver-qemu
-#usermod -aG kvm $USER
-#usermod -aG libvirt $USER
+#usermod -aG kvm $1
+#usermod -aG libvirt $1
