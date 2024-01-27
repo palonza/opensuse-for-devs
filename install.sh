@@ -136,3 +136,4 @@ sudo -u $1 ln -s /opt/sts-4.20.0.RELEASE/SpringToolSuite4 ~/bin/sts;
 #zypper install kvm virt-manager libvirt-daemon libvirt-daemon-driver-qemu
 #usermod -aG kvm $1
 #usermod -aG libvirt $1
+#usermod -aG qemu $1
