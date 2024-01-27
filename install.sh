@@ -30,7 +30,7 @@ zypper install -y --auto-agree-with-licenses zsh && sudo -u $1 chsh -s $(which z
 echo -e "\nINSTALL UTILITIES";
 zypper install -y --auto-agree-with-licenses neofetch helvum ksysguard5 symbols-only-nerd-fonts \
 mariadb-client sensors xclip btop powerline-fonts ksystemlog bucklespring \
-inkscape java-11-openjdk eclipse-jdt xournalpp;
+inkscape java-11-openjdk eclipse-jdt xournalpp dconf-editor;
 
 # zypper --gpg-auto-import-keys --non-interactive --quiet ar -n 'repo-ruby' \
 # -f https://download.opensuse.org/repositories/home:bmwiedemann:ruby/dlre_Tumbleweed/home:bmwiedemann:ruby.repo && \
@@ -113,17 +113,23 @@ sudo -u $1 git clone https://github.com/zsh-users/zsh-completions.git ${ZSH_CUST
 sudo -u $1 git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions;
 sudo -u $1 git clone https://github.com/lukechilds/zsh-nvm.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-nvm;
 
-#echo -e "\nINSTALL ORACLE JDK 8u151";
+echo -e "\nINSTALL ORACLE JDK 8u151";
 #wget -P ~/Downloads/ --continue --no-check-certificate --no-cookies --header \
 #"Cookie: oraclelicense=accept-securebackup-cookie" \
 #http://download.oracle.com/otn-pub/java/jdk/8u151-b12/e758a0de34e24606bca991d704f6dcbf/jdk-8u151-linux-x64.rpm && \
 #rpm -ivh ~/Downloads/jdk-8u151-linux-x64.rpm;
 
+sudo -u $1 wget -c --content-disposition \
+"https://javadl.oracle.com/webapps/download/AutoDL?BundleId=239835_230deb18db3e4014bb8e3e8324f81b43" \
+-P ~/Downloads/ -O jdk-8u221.tar.gz && \
+sudo -u $1 tar -xzvf ~/Downloads/jdk-8u221.tar.gz -C /tmp && \
+mv /tmp/jdk1.8.0_221 /usr/lib64/jvm/;
+
 echo -e "\nINSTALL STS 4";
 sudo -u $1 curl -o ~/Downloads/sts4.tar.gz \
 https://download.springsource.com/release/STS4/4.20.0.RELEASE/dist/e4.29/spring-tool-suite-4-4.20.0.RELEASE-e4.29.0-linux.gtk.x86_64.tar.gz && \
 sudo -u $1 tar -xzf ~/Downloads/sts4.tar.gz -C /tmp && \
-sudo -u $1 mv /tmp/sts-4.20.0.RELEASE /opt/ && \
+mv /tmp/sts-4.20.0.RELEASE /opt/ && \
 sudo -u $1 ln -s /opt/sts-4.20.0.RELEASE/SpringToolSuite4 ~/bin/sts;
 
 #echo -e "\nINSTALL KVM"
