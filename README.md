@@ -8,10 +8,10 @@ Allows installing the most commonly used tools by developers, such as POSIX, IDE
 ## Steps
 >Installation
 ```bash
-sudo wget https://raw.githubusercontent.com/palonza/opensuse-for-devs/main/install.sh | sudo bash -s "$(whoami)";
+sudo wget -O- https://raw.githubusercontent.com/palonza/opensuse-for-devs/main/install.sh | sudo bash -s "$(whoami)";
 ```
 
 >Testing
 ```bash
-sudo wget https://raw.githubusercontent.com/palonza/opensuse-for-devs/main/test.sh | sudo bash -s "$(whoami)";
+sudo wget -O- https://raw.githubusercontent.com/palonza/opensuse-for-devs/main/test.sh | sudo bash -s "$(whoami)";
 ```
