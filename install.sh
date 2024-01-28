@@ -68,13 +68,13 @@ zypper --gpg-auto-import-keys ref && zypper install -y --auto-agree-with-license
 zypper mr --disable 'repo-dbeaver';
 
 echo -e "\nINSTALL WAVEBOX";
-sudo -u $1 curl -sSL https://download.wavebox.app/static/wavebox_repo.key | sudo -u $1 gpg --import && \
-sudo -u $1 wget -P /etc/zypp/repos.d/ https://download.wavebox.app/stable/linux/rpm/wavebox.repo && \
+sudo -u $1 curl -sSL https://download.wavebox.app/static/wavebox_repo.key | gpg --import && \
+wget -P /etc/zypp/repos.d/ https://download.wavebox.app/stable/linux/rpm/wavebox.repo && \
 zypper --gpg-auto-import-keys --non-interactive --quiet mr 'Wavebox - x86_64' && \
 zypper --gpg-auto-import-keys ref && zypper install -y --auto-agree-with-licenses Wavebox;
 
 echo -e "\nINSTALL DOCKER";
-zypper install -y --auto-agree-with-licenses docker docker-compose yast2-docker && sudo -u $1 usermod -aG docker $1;
+zypper install -y --auto-agree-with-licenses docker docker-compose yast2-docker && usermod -aG docker $1;
 
 # TODO: note: here request always required (CHANGE THIS)
 echo -e "\nINSTALL POSTMAN"; 
@@ -119,7 +119,7 @@ echo -e "\nINSTALL ORACLE JDK 8u151";
 #http://download.oracle.com/otn-pub/java/jdk/8u151-b12/e758a0de34e24606bca991d704f6dcbf/jdk-8u151-linux-x64.rpm && \
 #rpm -ivh ~/Downloads/jdk-8u151-linux-x64.rpm;
 
-sudo -u $1 wget -c --content-disposition \
+sudo -u $1 wget --content-disposition \
 "https://javadl.oracle.com/webapps/download/AutoDL?BundleId=239835_230deb18db3e4014bb8e3e8324f81b43" \
 -P /home/$1/Downloads/ -O jdk-8u221.tar.gz && \
 sudo -u $1 tar -xzvf /home/$1/Downloads/jdk-8u221.tar.gz -C /tmp && \
