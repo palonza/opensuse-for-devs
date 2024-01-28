@@ -25,7 +25,7 @@ akonadi-plugin-contacts akonadi-plugin-contacts xterm \
 mariadb mailcommon mailimporter xscreensaver;
 
 echo -e "\nINSTALL ZSH";
-zypper install -y --auto-agree-with-licenses zsh && sudo -u $1 chsh -s $(which zsh);
+zypper install -y --auto-agree-with-licenses zsh;
 
 echo -e "\nINSTALL UTILITIES";
 zypper install -y --auto-agree-with-licenses neofetch helvum ksysguard5 symbols-only-nerd-fonts \
@@ -61,7 +61,7 @@ mv /home/$1/Downloads/prod.repo /etc/zypp/repos.d/microsoft-prod.repo &&\
 chown root:root /etc/zypp/repos.d/microsoft-prod.repo && \
 zypper --gpg-auto-import-keys ref && zypper install -y --auto-agree-with-licenses dotnet-sdk-8.0;
 
-#echo -e "\nINSTALL DBEAVER";
+echo -e "\nINSTALL DBEAVER";
 zypper --gpg-auto-import-keys --non-interactive --quiet ar -n 'repo-dbeaver' \
 -f https://download.opensuse.org/repositories/home:cabelo:innovators/openSUSE_Tumbleweed/home:cabelo:innovators.repo && \
 zypper --gpg-auto-import-keys ref && zypper install -y --auto-agree-with-licenses dbeaver && \
@@ -77,7 +77,7 @@ echo -e "\nINSTALL DOCKER";
 zypper install -y --auto-agree-with-licenses docker docker-compose yast2-docker && sudo -u $1 usermod -aG docker $1;
 
 # TODO: note: here request always required (CHANGE THIS)
-echo -e "\nINSTALL POSTMAN";
+echo -e "\nINSTALL POSTMAN"; 
 zypper --gpg-auto-import-keys --non-interactive --quiet ar -n 'repo-postman' \
 -f https://download.opensuse.org/repositories/home:gmsh/openSUSE_Tumbleweed/home:gmsh.repo && \
 zypper --gpg-auto-import-keys --non-interactive --quiet mr 'repo-postman' && \
@@ -87,7 +87,7 @@ zypper mr --disable 'repo-postman' && zypper refresh;
 # parameters if run on wayland: --enable-features=UseOzonePlatform --ozone-platform=wayland %u
 
 sudo -u $1 gem install lolcat --user-install && \
-sudo -u $1 ln -s ~/.local/share/gem/ruby/3.3.0/bin/lolcat.ruby3.3 ~/bin/lolcat;
+sudo -u $1 ln -s /home/$1/.local/share/gem/ruby/3.3.0/bin/lolcat.ruby3.3 /home/$1/bin/lolcat;
 
 # el siguiente comando posiblemente deba ejecutarse con sudo -u $USER o sudo -u $polook-suse, PROBARLO!!
 echo -e "\nINSTALL NVM (NODE VERSION MANAGER)";
@@ -101,17 +101,17 @@ sudo -u $1 /bin/bash -c "$(sudo -u $1 curl -fsSL https://raw.githubusercontent.c
 echo -e "\nINSTALL OMZ (OH MY ZSH)";
 # el siguiente comando deberia ejecutarse sin sudo
 sudo -u $1 sh -c "$(sudo -u $1 curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended;
-sudo -u $1 zstyle ':omz:update' mode auto;
-sudo -u $1 source ~/.zshrc;
-sudo -u $1 omz update;
+sudo -u $1 zsh -c "zstyle ':omz:update' mode auto";
+sudo -u $1 zsh -c "omz update";
+sudo -u $1 zsh -c "source /home/$1/.zshrc";
 
 echo -e "\nINSTALL OMZ PLUGINS";
 # sudo -u $1 mkdir ~/.oh-my-zsh/;
 # sudo -u $1 mkdir ${ZSH_CUSTOM:-~/.oh-my-zsh/custom};
-sudo -u $1 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting;
-sudo -u $1 git clone https://github.com/zsh-users/zsh-completions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions;
-sudo -u $1 git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions;
-sudo -u $1 git clone https://github.com/lukechilds/zsh-nvm.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-nvm;
+sudo -u $1 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/$1/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting;
+sudo -u $1 git clone https://github.com/zsh-users/zsh-completions.git /home/$1/.oh-my-zsh/custom/plugins/zsh-completions;
+sudo -u $1 git clone https://github.com/zsh-users/zsh-autosuggestions.git /home/$1/.oh-my-zsh/custom/plugins/zsh-autosuggestions;
+sudo -u $1 git clone https://github.com/lukechilds/zsh-nvm.git /home/$1/.oh-my-zsh/custom/plugins/zsh-nvm;
 
 echo -e "\nINSTALL ORACLE JDK 8u151";
 #wget -P ~/Downloads/ --continue --no-check-certificate --no-cookies --header \
@@ -121,16 +121,16 @@ echo -e "\nINSTALL ORACLE JDK 8u151";
 
 sudo -u $1 wget -c --content-disposition \
 "https://javadl.oracle.com/webapps/download/AutoDL?BundleId=239835_230deb18db3e4014bb8e3e8324f81b43" \
--P ~/Downloads/ -O jdk-8u221.tar.gz && \
-sudo -u $1 tar -xzvf ~/Downloads/jdk-8u221.tar.gz -C /tmp && \
+-P /home/$1/Downloads/ -O jdk-8u221.tar.gz && \
+sudo -u $1 tar -xzvf /home/$1/Downloads/jdk-8u221.tar.gz -C /tmp && \
 mv /tmp/jdk1.8.0_221 /usr/lib64/jvm/;
 
 echo -e "\nINSTALL STS 4";
-sudo -u $1 curl -o ~/Downloads/sts4.tar.gz \
+sudo -u $1 curl -o /home/$1/Downloads/sts4.tar.gz \
 https://download.springsource.com/release/STS4/4.20.0.RELEASE/dist/e4.29/spring-tool-suite-4-4.20.0.RELEASE-e4.29.0-linux.gtk.x86_64.tar.gz && \
-sudo -u $1 tar -xzf ~/Downloads/sts4.tar.gz -C /tmp && \
+sudo -u $1 tar -xzf /home/$1/Downloads/sts4.tar.gz -C /tmp && \
 mv /tmp/sts-4.20.0.RELEASE /opt/ && \
-sudo -u $1 ln -s /opt/sts-4.20.0.RELEASE/SpringToolSuite4 ~/bin/sts;
+sudo -u $1 ln -s /opt/sts-4.20.0.RELEASE/SpringToolSuite4 /home/$1/bin/sts;
 
 #echo -e "\nINSTALL KVM (Please, close this sesion, when finish.)"
 #zypper install kvm virt-manager libvirt-daemon libvirt-daemon-driver-qemu
