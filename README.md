@@ -6,6 +6,12 @@ Allows installing the most commonly used tools by developers, such as POSIX, IDE
 >I utilize it for my personal needs; if it proves helpful, feel free to employ it, but proceed at your own risk.
 
 ## Steps
+>Installation
 ```bash
-sudo wget -qO- https://github.com/palonza/opensuse-for-devs/blob/main/install.sh | sudo bash -s "$(whoami)";
+sudo wget https://raw.githubusercontent.com/palonza/opensuse-for-devs/main/install.sh | sudo bash -s "$(whoami)";
+```
+
+>Testing
+```bash
+sudo wget https://raw.githubusercontent.com/palonza/opensuse-for-devs/main/test.sh | sudo bash -s "$(whoami)";
 ```
