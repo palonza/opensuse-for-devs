@@ -43,8 +43,8 @@ echo -e "\nINSTALL GOOGLE CHROME";
 #wget -P ~/Downloads/linux_signing_key.pub https://dl.google.com/linux/linux_signing_key.pub && \
 #rpm --import ~/Downloads/linux_signing_key.pub && zypper refresh && zypper install -y --auto-agree-with-licenses google-chrome-stable;
 
-sudo -u $1 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub > ~/Downloads/linux_signing_key.pub && \
-sudo -u $1 rpm --import ~/Downloads/linux_signing_key.pub && \
+sudo -u $1 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub > /home/$1/Downloads/linux_signing_key.pub && \
+sudo -u $1 rpm --import /home/$1/Downloads/linux_signing_key.pub && \
 zypper --gpg-auto-import-keys --non-interactive --quiet ar -n 'repo-chrome' \
 -f http://dl.google.com/linux/chrome/rpm/stable/x86_64 Google-Chrome && zypper --gpg-auto-import-keys ref && \
 zypper install -y --auto-agree-with-licenses google-chrome-stable;
@@ -56,7 +56,7 @@ zypper --gpg-auto-import-keys ref && zypper install -y --auto-agree-with-license
 
 echo -e "\nINSTALL DOT NET SDK 8";
 zypper install -y --auto-agree-with-licenses libicu && \
-sudo -u $1 wget -P ~/Downloads/ https://packages.microsoft.com/config/opensuse/15/prod.repo && \
+sudo -u $1 wget -P /home/$1/Downloads/ https://packages.microsoft.com/config/opensuse/15/prod.repo && \
 mv /home/$1/Downloads/prod.repo /etc/zypp/repos.d/microsoft-prod.repo &&\
 chown root:root /etc/zypp/repos.d/microsoft-prod.repo && \
 zypper --gpg-auto-import-keys ref && zypper install -y --auto-agree-with-licenses dotnet-sdk-8.0;
