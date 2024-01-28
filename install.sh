@@ -25,7 +25,7 @@ akonadi-plugin-contacts akonadi-plugin-contacts xterm \
 mariadb mailcommon mailimporter xscreensaver;
 
 echo -e "\nINSTALL ZSH";
-zypper install -y --auto-agree-with-licenses zsh && sudo -u $1 chsh -s $(which zsh);
+zypper install -y --auto-agree-with-licenses zs;
 
 echo -e "\nINSTALL UTILITIES";
 zypper install -y --auto-agree-with-licenses neofetch helvum ksysguard5 symbols-only-nerd-fonts \
