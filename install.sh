@@ -132,6 +132,13 @@ sudo -u $1 tar -xzf /home/$1/Downloads/sts4.tar.gz -C /tmp && \
 mv /tmp/sts-4.20.0.RELEASE /opt/ && \
 sudo -u $1 ln -s /opt/sts-4.20.0.RELEASE/SpringToolSuite4 /home/$1/bin/sts;
 
+# echo -e "\nINSTALL TOR BROWSER";
+# sudo -u $1 curl -o /home/$1/Downloads/tor-expert-bundle-linux-x86_64-13.0.9.tar.gz \
+# https://archive.torproject.org/tor-package-archive/torbrowser/13.0.9/tor-expert-bundle-linux-x86_64-13.0.9.tar.gz && \
+# sudo -u $1 tar -xzf /home/$1/Downloads/tor-expert-bundle-linux-x86_64-13.0.9.tar.gz -C /tmp && \
+# mv /tmp/tor /opt/ && \
+# sudo -u $1 ln -s /opt/tor/tor /home/$1/bin/tor;
+
 #echo -e "\nINSTALL KVM (Please, close this sesion, when finish.)"
 #zypper install kvm virt-manager libvirt-daemon libvirt-daemon-driver-qemu
 #usermod -aG kvm $1
