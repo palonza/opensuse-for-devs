@@ -30,7 +30,7 @@ zypper install -y --auto-agree-with-licenses zsh;
 echo -e "\nINSTALL UTILITIES";
 zypper install -y --auto-agree-with-licenses neofetch helvum ksysguard5 symbols-only-nerd-fonts \
 mariadb-client sensors xclip btop powerline-fonts ksystemlog bucklespring \
-inkscape java-11-openjdk eclipse-jdt xournalpp dconf-editor;
+inkscape java-11-openjdk eclipse-jdt xournalpp dconf-editor protonvpn-gui;
 
 # zypper --gpg-auto-import-keys --non-interactive --quiet ar -n 'repo-ruby' \
 # -f https://download.opensuse.org/repositories/home:bmwiedemann:ruby/dlre_Tumbleweed/home:bmwiedemann:ruby.repo && \
