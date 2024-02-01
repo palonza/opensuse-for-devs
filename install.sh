@@ -24,6 +24,7 @@ akonadi-plugin-contacts akonadi-plugin-contacts \
 akonadi-plugin-contacts akonadi-plugin-contacts xterm \
 mariadb mailcommon mailimporter xscreensaver;
 
+echo -e "\nLOCKING UNINSTALLED AND UNNUSED PACKAGES";
 zypper addlock marble kmines kmahjongg \
 kpat kreversi ksudoku kontact hugin kmail ktnef xscreensaver \
 akregator skanlite korganizer pim-sieve-editor \
