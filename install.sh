@@ -39,7 +39,7 @@ zypper install -y --auto-agree-with-licenses zsh;
 
 echo -e "\nINSTALL UTILITIES";
 zypper install -y --auto-agree-with-licenses neofetch helvum ksysguard5 symbols-only-nerd-fonts \
-mariadb-client sensors xclip btop powerline-fonts ksystemlog bucklespring gimp \
+mariadb-client sensors xclip btop powerline-fonts ksystemlog bucklespring gimp kwrite \
 inkscape java-11-openjdk eclipse-jdt xournalpp dconf-editor protonvpn-gui simplescreenrecorder;
 
 # zypper --gpg-auto-import-keys --non-interactive --quiet ar -n 'repo-ruby' \
