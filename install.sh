@@ -32,15 +32,16 @@ pim-data-exporter akonadi-calendar-tools akonadi-contact \
 akonadi-import-wizard akonadi-plugin-calendar \
 akonadi-plugin-contacts akonadi-plugin-contacts \
 akonadi-plugin-contacts akonadi-plugin-contacts xterm \
-mariadb mailcommon mailimporter xscreensaver;
+mariadb mailcommon mailimporter xscreensaver partitionmanager;
 
-echo -e "\nINSTALL ZSH";
+echo -e "\nINSTALL ZSH (please, restart.)";
 zypper install -y --auto-agree-with-licenses zsh;
+chsh -s $(which zsh);
 
 echo -e "\nINSTALL UTILITIES";
 zypper install -y --auto-agree-with-licenses neofetch helvum ksysguard5 symbols-only-nerd-fonts \
 mariadb-client sensors xclip btop powerline-fonts ksystemlog bucklespring gimp kwrite \
-inkscape java-11-openjdk eclipse-jdt xournalpp dconf-editor protonvpn-gui simplescreenrecorder;
+inkscape java-11-openjdk eclipse-jdt xournalpp dconf-editor protonvpn-gui simplescreenrecorder kio-gdrive;
 
 # zypper --gpg-auto-import-keys --non-interactive --quiet ar -n 'repo-ruby' \
 # -f https://download.opensuse.org/repositories/home:bmwiedemann:ruby/dlre_Tumbleweed/home:bmwiedemann:ruby.repo && \
@@ -60,7 +61,7 @@ zypper --gpg-auto-import-keys --non-interactive --quiet ar -n 'repo-chrome' \
 zypper install -y --auto-agree-with-licenses google-chrome-stable;
 
 echo -e "\nINSTALL VSCODE";
-sudo -u $1 rpm --import https://packages.microsoft.com/keys/microsoft.asc && \
+rpm --import https://packages.microsoft.com/keys/microsoft.asc && \
 zypper --gpg-auto-import-keys --non-interactive --quiet ar -n 'repo-code' -f https://packages.microsoft.com/yumrepos/vscode vscode && \
 zypper --gpg-auto-import-keys ref && zypper install -y --auto-agree-with-licenses code;
 
@@ -154,3 +155,4 @@ sudo -u $1 ln -s /opt/sts-4.20.0.RELEASE/SpringToolSuite4 /home/$1/bin/sts;
 #usermod -aG kvm $1
 #usermod -aG libvirt $1
 #usermod -aG qemu $1
+echo -e "\nPlease, restart this computer to refresh new settings.";
