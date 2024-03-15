@@ -36,10 +36,10 @@ mariadb mailcommon mailimporter xscreensaver partitionmanager;
  
 echo -e "\nINSTALL ZSH (please, restart.)";
 zypper install -y --auto-agree-with-licenses zsh;
-chsh -s $(which zsh);
+#chsh -s $(which zsh);
 
-echo -e "\nINSTALL UTILITIES";
-zypper install -y --auto-agree-with-licenses neofetch helvum ksysguard5 symbols-only-nerd-fonts \
+echo -e "\nINSTALL UTILITIES";#ksysguard5 no es compatible con kde plasma 6
+zypper install -y --auto-agree-with-licenses neofetch helvum symbols-only-nerd-fonts \
 mariadb-client sensors xclip btop powerline-fonts ksystemlog bucklespring gimp kwrite \
 inkscape java-11-openjdk eclipse-jdt xournalpp dconf-editor protonvpn-gui simplescreenrecorder kio-gdrive;
  
@@ -54,11 +54,21 @@ echo -e "\nINSTALL GOOGLE CHROME";
 #wget -P ~/Downloads/linux_signing_key.pub https://dl.google.com/linux/linux_signing_key.pub && \
 #rpm --import ~/Downloads/linux_signing_key.pub && zypper refresh && zypper install -y --auto-agree-with-licenses google-chrome-stable;
 
-sudo -u $1 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub > /home/$1/Downloads/linux_signing_key.pub && \
-sudo -u $1 rpm --import /home/$1/Downloads/linux_signing_key.pub && \
-zypper --gpg-auto-import-keys --non-interactive --quiet ar -n 'repo-chrome' \
--f http://dl.google.com/linux/chrome/rpm/stable/x86_64 Google-Chrome && zypper --gpg-auto-import-keys ref && \
-zypper install -y --auto-agree-with-licenses google-chrome-stable;
+#sudo -u $1 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub > /home/$1/Downloads/linux_signing_key.pub && \
+#sudo -u $1 rpm --import /home/$1/Downloads/linux_signing_key.pub && \
+#zypper --gpg-auto-import-keys --non-interactive --quiet ar -n 'repo-chrome' \
+#-f http://dl.google.com/linux/chrome/rpm/stable/x86_64 Google-Chrome && zypper --gpg-auto-import-keys ref && \
+#zypper install -y --auto-agree-with-licenses google-chrome-stable;
+
+echo "[chrome]
+enabled=1
+autorefresh=1
+baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64
+type=rpm-md
+priority=100
+gpgcheck=1
+gpgkey=https://dl.google.com/linux/linux_signing_key.pub" | tee /etc/zypp/repos.d/repo-chrome.repo
+zypper install google-chrome-stable
 
 echo -e "\nINSTALL VSCODE";
 rpm --import https://packages.microsoft.com/keys/microsoft.asc && \
