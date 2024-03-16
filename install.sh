@@ -38,10 +38,10 @@ echo -e "\nINSTALL ZSH (please, restart.)";
 zypper install -y --auto-agree-with-licenses zsh;
 #chsh -s $(which zsh);
 
-echo -e "\nINSTALL UTILITIES";#ksysguard5 no es compatible con kde plasma 6
+echo -e "\nINSTALL UTILITIES";#ksysguard5 xournalpp no es compatible con kde plasma 6
 zypper install -y --auto-agree-with-licenses neofetch helvum symbols-only-nerd-fonts \
 mariadb-client sensors xclip btop powerline-fonts ksystemlog bucklespring gimp kwrite \
-inkscape java-11-openjdk eclipse-jdt xournalpp dconf-editor protonvpn-gui simplescreenrecorder kio-gdrive;
+inkscape java-11-openjdk eclipse-jdt dconf-editor protonvpn-gui simplescreenrecorder kio-gdrive;
  
 # zypper --gpg-auto-import-keys --non-interactive --quiet ar -n 'repo-ruby' \
 # -f https://download.opensuse.org/repositories/home:bmwiedemann:ruby/dlre_Tumbleweed/home:bmwiedemann:ruby.repo && \
