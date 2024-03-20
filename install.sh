@@ -39,9 +39,15 @@ zypper install -y --auto-agree-with-licenses zsh;
 #chsh -s $(which zsh);
 
 echo -e "\nINSTALL UTILITIES";#ksysguard5 xournalpp no es compatible con kde plasma 6
-zypper install -y --auto-agree-with-licenses neofetch helvum symbols-only-nerd-fonts \
-mariadb-client sensors xclip btop powerline-fonts ksystemlog bucklespring gimp kwrite \
-inkscape java-11-openjdk eclipse-jdt dconf-editor protonvpn-gui simplescreenrecorder kio-gdrive;
+zypper install -y --auto-agree-with-licenses neofetch helvum symbols-only-nerd-fonts findutils-locate libnotify-tools libqt5-qtbase-devel \
+mariadb-client sensors xclip btop powerline-fonts ksystemlog bucklespring gimp kwrite wireshark qt6-multimedia \
+inkscape java-11-openjdk eclipse-jdt dconf-editor protonvpn-gui simplescreenrecorder kio-gdrive xdotool;
+
+#TODO: agregar esto
+#zypper addrepo https://download.opensuse.org/repositories/home:hennevogel:modern-unix/openSUSE_Tumbleweed/home:hennevogel:modern-unix.repo && \
+#sudo zypper refresh && sudo zypper install exa
+
+sudo updatedb;
  
 # zypper --gpg-auto-import-keys --non-interactive --quiet ar -n 'repo-ruby' \
 # -f https://download.opensuse.org/repositories/home:bmwiedemann:ruby/dlre_Tumbleweed/home:bmwiedemann:ruby.repo && \
@@ -166,3 +172,5 @@ sudo -u $1 ln -s /opt/sts-4.20.0.RELEASE/SpringToolSuite4 /home/$1/bin/sts;
 #usermod -aG libvirt $1
 #usermod -aG qemu $1
 echo -e "\nPlease, restart this computer to refresh new settings.";
+
+sudo updatedb;
