@@ -22,7 +22,7 @@ pim-data-exporter akonadi-calendar-tools akonadi-contact \
 akonadi-import-wizard akonadi-plugin-calendar \
 akonadi-plugin-contacts akonadi-plugin-contacts \
 akonadi-plugin-contacts akonadi-plugin-contacts xterm \
-mariadb mailcommon mailimporter xscreensaver;
+mariadb mailcommon mailimporter xscreensaver akonadi-calendar-tools akonadi-contacts akonadi-import-wizard akonadi-mime akonadi-plugin-calendar akonadi-plugin-contacts libKPim6AkonadiAgentBase6 libKPim6AkonadiContactCore6 libKPim6AkonadiContactWidgets6 libKPim6AkonadiCore6 libKPim6AkonadiMime6 libKPim6AkonadiNotes6 libKPim6AkonadiPrivate6 libKPim6AkonadiSearch6 libKPim6AkonadiWidgets6 libKPim6PimCommonAkonadi6;
 
 echo -e "\nLOCKING UNINSTALLED AND UNNUSED PACKAGES";
 zypper addlock marble kmines kmahjongg \
@@ -32,7 +32,7 @@ pim-data-exporter akonadi-calendar-tools akonadi-contact \
 akonadi-import-wizard akonadi-plugin-calendar \
 akonadi-plugin-contacts akonadi-plugin-contacts \
 akonadi-plugin-contacts akonadi-plugin-contacts xterm \
-mariadb mailcommon mailimporter xscreensaver partitionmanager;
+mariadb mailcommon mailimporter xscreensaver partitionmanager akonadi-calendar-tools akonadi-contacts akonadi-import-wizard akonadi-mime akonadi-plugin-calendar akonadi-plugin-contacts libKPim6AkonadiAgentBase6 libKPim6AkonadiContactCore6 libKPim6AkonadiContactWidgets6 libKPim6AkonadiCore6 libKPim6AkonadiMime6 libKPim6AkonadiNotes6 libKPim6AkonadiPrivate6 libKPim6AkonadiSearch6 libKPim6AkonadiWidgets6 libKPim6PimCommonAkonadi6;
  
 echo -e "\nINSTALL ZSH (please, restart.)";
 zypper install -y --auto-agree-with-licenses zsh;
@@ -84,7 +84,7 @@ zypper --gpg-auto-import-keys ref && zypper install -y --auto-agree-with-license
 echo -e "\nINSTALL DOT NET SDK 8";
 zypper install -y --auto-agree-with-licenses libicu && \
 sudo -u $1 wget -P /home/$1/Downloads/ https://packages.microsoft.com/config/opensuse/15/prod.repo && \
-mv /home/$1/Downloads/prod.repo /etc/zypp/repos.d/microsoft-prod.repo &&\
+mv /home/$1/Downloads/prod.repo /etc/zypp/repos.d/microsoft-prod.repo && \
 chown root:root /etc/zypp/repos.d/microsoft-prod.repo && \
 zypper --gpg-auto-import-keys ref && zypper install -y --auto-agree-with-licenses dotnet-sdk-8.0;
 
