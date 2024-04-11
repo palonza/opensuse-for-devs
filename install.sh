@@ -41,7 +41,7 @@ zypper install -y --auto-agree-with-licenses zsh;
 echo -e "\nINSTALL UTILITIES";#ksysguard5 xournalpp no es compatible con kde plasma 6
 zypper install -y --auto-agree-with-licenses neofetch helvum symbols-only-nerd-fonts findutils-locate libnotify-tools libqt5-qtbase-devel \
 mariadb-client sensors xclip btop powerline-fonts ksystemlog bucklespring gimp kwrite wireshark qt6-multimedia \
-inkscape java-11-openjdk eclipse-jdt dconf-editor protonvpn-gui simplescreenrecorder kio-gdrive xdotool;
+inkscape java-11-openjdk eclipse-jdt dconf-editor protonvpn-gui simplescreenrecorder kio-gdrive xdotool qemu-guest-agent;
 
 #TODO: agregar esto
 #zypper addrepo https://download.opensuse.org/repositories/home:hennevogel:modern-unix/openSUSE_Tumbleweed/home:hennevogel:modern-unix.repo && \
