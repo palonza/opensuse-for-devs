@@ -100,6 +100,12 @@ wget -P /etc/zypp/repos.d/ https://download.wavebox.app/stable/linux/rpm/wavebox
 zypper --gpg-auto-import-keys --non-interactive --quiet mr 'Wavebox - x86_64' && \
 zypper --gpg-auto-import-keys ref && zypper install -y --auto-agree-with-licenses Wavebox;
 
+echo -e "\nVIRTUAL BOX";
+zypper addrepo https://download.virtualbox.org/virtualbox/rpm/opensuse/13.2 virtualbox  
+wget -q https://www.virtualbox.org/download/oracle_vbox.asc
+zypper install virtualbox
+#sudo usermod -aG vboxusers $USER
+
 echo -e "\nINSTALL DOCKER";
 zypper install -y --auto-agree-with-licenses docker docker-compose yast2-docker && usermod -aG docker $1;
 
