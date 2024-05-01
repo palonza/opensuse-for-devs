@@ -66,15 +66,8 @@ echo -e "\nINSTALL GOOGLE CHROME";
 #-f http://dl.google.com/linux/chrome/rpm/stable/x86_64 Google-Chrome && zypper --gpg-auto-import-keys ref && \
 #zypper install -y --auto-agree-with-licenses google-chrome-stable;
 
-echo "[chrome]
-enabled=1
-autorefresh=1
-baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64
-type=rpm-md
-priority=100
-gpgcheck=1
-gpgkey=https://dl.google.com/linux/linux_signing_key.pub" | tee /etc/zypp/repos.d/repo-chrome.repo
-zypper install google-chrome-stable
+echo -e "[chrome]\nenabled=1\nautorefresh=1\nbaseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64\ntype=rpm-md\npriority=100\ngpgcheck=1\ngpgkey=https://dl.google.com/linux/linux_signing_key.pub" | tee /etc/zypp/repos.d/repo-chrome.repo;
+zypper --gpg-auto-import-keys ref && zypper install -y --auto-agree-with-licenses google-chrome-stable;
 
 echo -e "\nINSTALL VSCODE";
 rpm --import https://packages.microsoft.com/keys/microsoft.asc && \
