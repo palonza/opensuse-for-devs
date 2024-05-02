@@ -86,6 +86,7 @@ zypper --gpg-auto-import-keys --non-interactive --quiet ar -n 'repo-dbeaver' \
 -f https://download.opensuse.org/repositories/home:cabelo:innovators/openSUSE_Tumbleweed/home:cabelo:innovators.repo && \
 zypper --gpg-auto-import-keys ref && zypper install -y --auto-agree-with-licenses dbeaver && \
 zypper mr --disable 'repo-dbeaver';
+# por compatibilidad se debe deshabilitar si o si
 
 echo -e "\nINSTALL WAVEBOX";
 sudo -u $1 curl -sSL https://download.wavebox.app/static/wavebox_repo.key | gpg --import && \
