@@ -22,7 +22,12 @@ pim-data-exporter akonadi-calendar-tools akonadi-contact \
 akonadi-import-wizard akonadi-plugin-calendar \
 akonadi-plugin-contacts akonadi-plugin-contacts \
 akonadi-plugin-contacts akonadi-plugin-contacts xterm \
-mariadb mailcommon mailimporter xscreensaver akonadi-calendar-tools akonadi-contacts akonadi-import-wizard akonadi-mime akonadi-plugin-calendar akonadi-plugin-contacts libKPim6AkonadiAgentBase6 libKPim6AkonadiContactCore6 libKPim6AkonadiContactWidgets6 libKPim6AkonadiCore6 libKPim6AkonadiMime6 libKPim6AkonadiNotes6 libKPim6AkonadiPrivate6 libKPim6AkonadiSearch6 libKPim6AkonadiWidgets6 libKPim6PimCommonAkonadi6;
+mariadb mailcommon mailimporter xscreensaver akonadi-calendar-tools \
+akonadi-contacts akonadi-import-wizard akonadi-mime akonadi-plugin-calendar \
+akonadi-plugin-contacts libKPim6AkonadiAgentBase6 libKPim6AkonadiContactCore6 \
+libKPim6AkonadiContactWidgets6 libKPim6AkonadiCore6 libKPim6AkonadiMime6 \
+libKPim6AkonadiNotes6 libKPim6AkonadiPrivate6 libKPim6AkonadiSearch6 \
+libKPim6AkonadiWidgets6 libKPim6PimCommonAkonadi6 yast2-snapper snapper;
 
 echo -e "\nLOCKING UNINSTALLED AND UNNUSED PACKAGES";
 zypper addlock marble kmines kmahjongg \
