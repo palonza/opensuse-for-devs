@@ -37,7 +37,13 @@ pim-data-exporter akonadi-calendar-tools akonadi-contact \
 akonadi-import-wizard akonadi-plugin-calendar \
 akonadi-plugin-contacts akonadi-plugin-contacts \
 akonadi-plugin-contacts akonadi-plugin-contacts xterm \
-mariadb mailcommon mailimporter xscreensaver partitionmanager akonadi-calendar-tools akonadi-contacts akonadi-import-wizard akonadi-mime akonadi-plugin-calendar akonadi-plugin-contacts libKPim6AkonadiAgentBase6 libKPim6AkonadiContactCore6 libKPim6AkonadiContactWidgets6 libKPim6AkonadiCore6 libKPim6AkonadiMime6 libKPim6AkonadiNotes6 libKPim6AkonadiPrivate6 libKPim6AkonadiSearch6 libKPim6AkonadiWidgets6 libKPim6PimCommonAkonadi6;
+mariadb mailcommon mailimporter xscreensaver partitionmanager \
+akonadi-calendar-tools akonadi-contacts akonadi-import-wizard \
+akonadi-mime akonadi-plugin-calendar akonadi-plugin-contacts \
+libKPim6AkonadiAgentBase6 libKPim6AkonadiContactCore6 \
+libKPim6AkonadiContactWidgets6 libKPim6AkonadiCore6 \
+libKPim6AkonadiMime6 libKPim6AkonadiNotes6 libKPim6AkonadiPrivate6 \
+libKPim6AkonadiSearch6 libKPim6AkonadiWidgets6 libKPim6PimCommonAkonadi6;
  
 echo -e "\nINSTALL ZSH (please, restart.)";
 zypper install -y --auto-agree-with-licenses zsh;
@@ -47,6 +53,9 @@ echo -e "\nINSTALL UTILITIES";#ksysguard5 xournalpp no es compatible con kde pla
 zypper install -y --auto-agree-with-licenses neofetch helvum symbols-only-nerd-fonts findutils-locate libnotify-tools libqt5-qtbase-devel \
 mariadb-client sensors xclip btop powerline-fonts ksystemlog bucklespring gimp kwrite wireshark qt6-multimedia \
 inkscape java-11-openjdk eclipse-jdt dconf-editor protonvpn-gui simplescreenrecorder kio-gdrive xdotool qemu-guest-agent;
+
+#GITHUB CLI
+zypper addrepo https://cli.github.com/packages/rpm/gh-cli.repo && zypper --gpg-auto-import-keys ref && zypper install -y --auto-agree-with-licenses gh;
 
 #TODO: agregar esto
 #zypper addrepo https://download.opensuse.org/repositories/home:hennevogel:modern-unix/openSUSE_Tumbleweed/home:hennevogel:modern-unix.repo && \
