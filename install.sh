@@ -20,7 +20,7 @@ kpat kreversi ksudoku kontact hugin kmail ktnef xscreensaver \
 akregator skanlite korganizer pim-sieve-editor \
 pim-data-exporter akonadi-calendar-tools akonadi-contact \
 akonadi-import-wizard akonadi-plugin-calendar \
-akonadi-plugin-contacts akonadi-plugin-contacts certbot \
+akonadi-plugin-contacts akonadi-plugin-contacts certbot sox \
 akonadi-plugin-contacts akonadi-plugin-contacts xterm chezmoi chezmoi-zsh-completion \
 mariadb mailcommon mailimporter xscreensaver akonadi-calendar-tools \
 akonadi-contacts akonadi-import-wizard akonadi-mime akonadi-plugin-calendar \
