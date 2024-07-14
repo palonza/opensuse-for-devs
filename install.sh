@@ -185,6 +185,22 @@ sudo -u $1 ln -s /opt/sts-4.20.0.RELEASE/SpringToolSuite4 /home/$1/bin/sts;
 #usermod -aG kvm $1
 #usermod -aG libvirt $1
 #usermod -aG qemu $1
+
+
+
+#msbuild for dotnet 4.5
+#
+#zypper addrepo https://download.opensuse.org/repositories/openSUSE:Leap:15.1/standard/openSUSE:Leap:15.1.repo
+#zypper refresh
+#zypper install mono-addins-msbuild
+
+#sudo zypper install mono-complete
+#sudo zypper install mono-core mono-devel
+#
+#sudo zypper addrepo https://download.opensuse.org/repositories/home:smarty12:games/openSUSE_Leap_15.4/home:smarty12:games.repo
+#zypper install msbuild
+
+
 echo -e "\nPlease, restart this computer to refresh new settings.";
 
 sudo updatedb;
