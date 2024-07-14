@@ -195,7 +195,7 @@ sudo -u $1 ln -s /opt/sts-4.20.0.RELEASE/SpringToolSuite4 /home/$1/bin/sts;
 #zypper install mono-addins-msbuild
 
 #sudo zypper install mono-complete
-#sudo zypper install mono-core mono-devel
+#sudo zypper install mono-core mono-devel #creo que esta linea no deberia ir porque los paquetes no existen
 #
 #sudo zypper addrepo https://download.opensuse.org/repositories/home:smarty12:games/openSUSE_Leap_15.4/home:smarty12:games.repo
 #zypper install msbuild
