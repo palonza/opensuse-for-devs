@@ -172,14 +172,14 @@ echo -e "\nINSTALL ORACLE JDK 8u151";
 sudo -u $1 wget --content-disposition \
 "https://javadl.oracle.com/webapps/download/AutoDL?BundleId=239835_230deb18db3e4014bb8e3e8324f81b43" \
 -P /home/$1/Downloads/ -O jdk-8u221.tar.gz && \
-sudo -u $1 tar -xzvf /home/$1/Downloads/jdk-8u221.tar.gz -C /tmp && \
-mv /tmp/jdk1.8.0_221 /usr/lib64/jvm/;
-
+sudo -u $1 tar -xzvf /home/$1/Downloads/jdk-8u221.tar.gz -C /home/$1/Downloads/ && \
+mv /home/$1/Downloads/jdk1.8.0_221 /usr/lib64/jvm/;
+        
 echo -e "\nINSTALL STS 4";
 sudo -u $1 curl -o /home/$1/Downloads/sts4.tar.gz \
 https://download.springsource.com/release/STS4/4.20.0.RELEASE/dist/e4.29/spring-tool-suite-4-4.20.0.RELEASE-e4.29.0-linux.gtk.x86_64.tar.gz && \
-sudo -u $1 tar -xzf /home/$1/Downloads/sts4.tar.gz -C /tmp && \
-mv /tmp/sts-4.20.0.RELEASE /opt/ && \
+sudo -u $1 tar -xzf /home/$1/Downloads/sts4.tar.gz -C /home/$1/Downloads/ && \
+mv /home/$1/Downloads/sts-4.20.0.RELEASE /opt/ && \
 sudo -u $1 ln -s /opt/sts-4.20.0.RELEASE/SpringToolSuite4 /home/$1/bin/sts;
 
 # echo -e "\nINSTALL TOR BROWSER";
