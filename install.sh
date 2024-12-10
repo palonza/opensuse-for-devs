@@ -27,7 +27,7 @@ akonadi-contacts akonadi-import-wizard akonadi-mime akonadi-plugin-calendar \
 akonadi-plugin-contacts libKPim6AkonadiAgentBase6 libKPim6AkonadiContactCore6 \
 libKPim6AkonadiContactWidgets6 libKPim6AkonadiCore6 libKPim6AkonadiMime6 \
 libKPim6AkonadiNotes6 libKPim6AkonadiPrivate6 libKPim6AkonadiSearch6 \
-libKPim6AkonadiWidgets6 libKPim6PimCommonAkonadi6 yast2-snapper snapper;
+libKPim6AkonadiWidgets6 libKPim6PimCommonAkonadi6;
 
 echo -e "\nLOCKING UNINSTALLED AND UNNUSED PACKAGES";
 zypper addlock marble kmines kmahjongg \
@@ -51,8 +51,8 @@ zypper install -y --auto-agree-with-licenses zsh;
 
 echo -e "\nINSTALL UTILITIES";#ksysguard5 xournalpp no es compatible con kde plasma 6
 zypper install -y --auto-agree-with-licenses neofetch helvum symbols-only-nerd-fonts findutils-locate libnotify-tools libqt5-qtbase-devel \
-mariadb-client sensors xclip btop powerline-fonts ksystemlog bucklespring gimp kwrite wireshark qt6-multimedia \
-inkscape java-11-openjdk eclipse-jdt dconf-editor protonvpn-gui simplescreenrecorder kio-gdrive xdotool qemu-guest-agent;
+mariadb-client sensors xclip btop powerline-fonts ksystemlog bucklespring gimp kwrite wireshark qt6-multimedia yast2-snapper snapper \
+inkscape java-11-openjdk eclipse-jdt dconf-editor protonvpn-gui simplescreenrecorder kio-gdrive xdotool qemu-guest-agent eza;
 
 #GITHUB CLI
 zypper addrepo https://cli.github.com/packages/rpm/gh-cli.repo && zypper --gpg-auto-import-keys ref && zypper install -y --auto-agree-with-licenses gh;
@@ -98,7 +98,7 @@ zypper --gpg-auto-import-keys ref && zypper install -y --auto-agree-with-license
 echo -e "\nINSTALL DBEAVER";
 zypper --gpg-auto-import-keys --non-interactive --quiet ar -n 'repo-dbeaver' \
 -f https://download.opensuse.org/repositories/home:cabelo:innovators/openSUSE_Tumbleweed/home:cabelo:innovators.repo && \
-zypper --gpg-auto-import-keys ref && zypper install -y --auto-agree-with-licenses dbeaver && \
+zypper --gpg-auto-import-keys ref && zypper install -y --auto-agree-with-licenses dbeaver;
 zypper mr --disable 'repo-dbeaver';
 # por compatibilidad se debe deshabilitar si o si
 
@@ -118,12 +118,12 @@ echo -e "\nINSTALL DOCKER";
 zypper install -y --auto-agree-with-licenses docker docker-compose yast2-docker && usermod -aG docker $1;
 
 # TODO: note: here request always required (CHANGE THIS)
-echo -e "\nINSTALL POSTMAN"; 
-zypper --gpg-auto-import-keys --non-interactive --quiet ar -n 'repo-postman' \
--f https://download.opensuse.org/repositories/home:gmsh/openSUSE_Tumbleweed/home:gmsh.repo && \
-zypper --gpg-auto-import-keys --non-interactive --quiet mr 'repo-postman' && \
-zypper --gpg-auto-import-keys ref && zypper install -y --auto-agree-with-licenses postman && \
-zypper mr --disable 'repo-postman' && zypper refresh;
+# echo -e "\nINSTALL POSTMAN"; 
+#zypper --gpg-auto-import-keys --non-interactive --quiet ar -n 'repo-postman' \
+#-f https://download.opensuse.org/repositories/home:gmsh/openSUSE_Tumbleweed/home:gmsh.repo && \
+# zypper --gpg-auto-import-keys --non-interactive --quiet mr 'repo-postman' && \
+# zypper --gpg-auto-import-keys ref && zypper install -y --auto-agree-with-licenses postman && \
+# zypper mr --disable 'repo-postman' && zypper refresh;
 
 # parameters if run on wayland: --enable-features=UseOzonePlatform --ozone-platform=wayland %u
 
@@ -133,11 +133,20 @@ sudo -u $1 ln -s /home/$1/.local/share/gem/ruby/3.3.0/bin/lolcat.ruby3.3 /home/$
 # el siguiente comando posiblemente deba ejecutarse con sudo -u $USER o sudo -u $polook-suse, PROBARLO!!
 echo -e "\nINSTALL NVM (NODE VERSION MANAGER)";
 sudo -u $1 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | sudo -u $1 bash;
-sudo -u $1 nvm install 18.17.1;
-sudo -u $1 nvm alias default 18.17.1;
+#sudo -u $1 nvm install 18.17.1;
+#sudo -u $1 nvm alias default 18.17.1;
 
 echo -e "\nINSTALL JET BRAINS MONO FONTS";
 sudo -u $1 /bin/bash -c "$(sudo -u $1 curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)";
+sudo -u $1 wget -P /home/$1/Downloads/postman_linux_64.tar https://dl.pstmn.io/download/latest/linux_64
+sudo -u $1 tar -xzf /home/$1/Downloads/postman_linux_64.tar
+
+mv Postman postman
+mv postman /opt/
+bash -c 'cat <<EOF > /usr/share/applications/postman.desktop\n[Desktop Entry]\nName=Postman\nGenericName=API Development Environment\nExec=/opt/Postman/Postman\nIcon=/opt/Postman/app/resources/app/assets/icon.png\nTerminal=false\nType=Application\nCategories=Development;\nEOF'
+chmod 644 /usr/share/applications/postman.desktop
+chmod +x /usr/share/applications/postman.desktop
+update-desktop-database
 
 echo -e "\nINSTALL OMZ (OH MY ZSH)";
 # el siguiente comando deberia ejecutarse sin sudo
@@ -186,20 +195,15 @@ sudo -u $1 ln -s /opt/sts-4.20.0.RELEASE/SpringToolSuite4 /home/$1/bin/sts;
 #usermod -aG libvirt $1
 #usermod -aG qemu $1
 
-
-
 #msbuild for dotnet 4.5
-#
 #zypper addrepo https://download.opensuse.org/repositories/openSUSE:Leap:15.1/standard/openSUSE:Leap:15.1.repo
 #zypper refresh
 #zypper install mono-addins-msbuild
 
 #sudo zypper install mono-complete
-#sudo zypper install mono-core mono-devel #creo que esta linea no deberia ir porque los paquetes no existen
-#
+#sudo zypper install mono-core mono-devel #creo que esta linea no deberia ir porque los paquetes no existen#
 #sudo zypper addrepo https://download.opensuse.org/repositories/home:smarty12:games/openSUSE_Leap_15.4/home:smarty12:games.repo
 #zypper install msbuild
-
 
 echo -e "\nPlease, restart this computer to refresh new settings.";
 
