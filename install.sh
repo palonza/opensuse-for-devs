@@ -21,7 +21,7 @@ akregator skanlite korganizer pim-sieve-editor \
 pim-data-exporter akonadi-calendar-tools akonadi-contact \
 akonadi-import-wizard akonadi-plugin-calendar \
 akonadi-plugin-contacts akonadi-plugin-contacts certbot sox \
-akonadi-plugin-contacts akonadi-plugin-contacts xterm chezmoi chezmoi-zsh-completion \
+akonadi-plugin-contacts akonadi-plugin-contacts xterm \
 mariadb mailcommon mailimporter xscreensaver akonadi-calendar-tools \
 akonadi-contacts akonadi-import-wizard akonadi-mime akonadi-plugin-calendar \
 akonadi-plugin-contacts libKPim6AkonadiAgentBase6 libKPim6AkonadiContactCore6 \
@@ -52,7 +52,7 @@ zypper install -y --auto-agree-with-licenses zsh;
 echo -e "\nINSTALL UTILITIES";#ksysguard5 xournalpp no es compatible con kde plasma 6
 zypper install -y --auto-agree-with-licenses neofetch helvum symbols-only-nerd-fonts findutils-locate libnotify-tools libqt5-qtbase-devel \
 mariadb-client sensors xclip btop powerline-fonts ksystemlog bucklespring gimp kwrite wireshark qt6-multimedia yast2-snapper snapper \
-inkscape java-11-openjdk eclipse-jdt dconf-editor protonvpn-gui simplescreenrecorder kio-gdrive xdotool qemu-guest-agent eza;
+inkscape java-11-openjdk eclipse-jdt dconf-editor protonvpn-gui simplescreenrecorder kio-gdrive xdotool qemu-guest-agent eza chezmoi chezmoi-zsh-completion;
 
 #GITHUB CLI
 zypper addrepo https://cli.github.com/packages/rpm/gh-cli.repo && zypper --gpg-auto-import-keys ref && zypper install -y --auto-agree-with-licenses gh;
